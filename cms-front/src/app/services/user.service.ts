@@ -13,7 +13,7 @@ export interface CredentialInterface{
 })
 export class UserService {
   static readonly CREDENTIAL_KEY_NAME: string = 'login-access-token';
-  readonly USER_DATA_KEY_NAME: string = 'user-data';
+  static readonly USER_DATA_KEY_NAME: string = 'user-data';
   private __loggedInUser__: any; // logged in user data
   private __savedCredentials__: any; // storing the credentials in service because no need to call or load json file again
   constructor(private http: HttpClient) { }
@@ -67,6 +67,7 @@ export class UserService {
   // it checks Credential of a user an give data to to send to component
   getResAfterCheckLoginCredentials(userData: any){
     localStorage.setItem(UserService.CREDENTIAL_KEY_NAME, btoa(userData.accessToken));
+    localStorage.setItem(UserService.USER_DATA_KEY_NAME, btoa(userData.id));
   }
 
   // return boolean if user is logged in or not

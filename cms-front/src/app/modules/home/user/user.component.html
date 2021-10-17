@@ -34,7 +34,7 @@
         <td>
           <ng-container *ngIf="user.canDelete">
             <span class="fa fa-pencil" style="margin-right: 20px;" (click)="editUser(mymodal, user)"></span>
-            <span class="fa fa-trash" (click)="deleteUser(user)"></span>
+            <span class="fa fa-trash" *ngIf="user.id != userId" (click)="deleteUser(user)"></span>
           </ng-container>
         </td>
       </tr>

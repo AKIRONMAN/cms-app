@@ -19,9 +19,14 @@ export class UserComponent implements OnInit {
   reloadDialog: boolean = false;
   name: any;
   status: any;
+  userId: any;
   constructor(private userService: UserService, private toastrService: ToastrService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    this.userId = localStorage.getItem(UserService.USER_DATA_KEY_NAME) || '';
+    console.log(this.userId);
+    this.userId = atob(this.userId);
+    console.log(this.userId);
     this.reloadDialog = true;
     this.loadUsers();
   }

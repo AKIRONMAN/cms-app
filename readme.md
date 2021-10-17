@@ -53,6 +53,9 @@ node app will not run after creating it please start the app.
    - `/customers`
  
 #### Used jwt token for authentication and used sequelize and express app
-   
+   - After running the app you can login via predefind 
+   admin which has credential
+   email: admin@item.com
+   password: 12345
    
    
