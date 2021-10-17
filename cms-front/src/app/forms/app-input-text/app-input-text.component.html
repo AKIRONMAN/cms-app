@@ -1,0 +1,18 @@
+<div *ngIf="fieldMeta && fieldMeta.fieldName" [formGroup]="formGroup" class="input">
+  <label *ngIf="fieldMeta.displayLabel != ''" [class]="fieldMeta.labelClass">{{fieldMeta.displayLabel}}</label>
+  <input
+    class="form-control"
+    [formControlName]="fieldMeta.fieldName"
+    [name]="fieldMeta.fieldName"
+    [id]="fieldMeta.fieldName"
+    [type]="fieldMeta.type || ''"
+    [placeholder]="fieldMeta.placeholder"
+    [value]="fieldMeta.value"
+    (blur)="onBlur($event)"
+
+  />
+  <span class="text-danger" *ngIf="(isBlur || formGroup.controls[fieldMeta.fieldName].touched)
+        && formGroup.controls[fieldMeta.fieldName].invalid">
+          {{ 'Please enter valid input.'}}
+        </span>
+</div>

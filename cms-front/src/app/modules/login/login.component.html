@@ -1,0 +1,22 @@
+<form class="form-signin" *ngIf="!showLoader">
+  <div class="form-group">
+    <app-input-text
+      [formGroup]="formGroup"
+      [fieldMeta]="userNameField"
+    >
+    </app-input-text>
+
+    <app-input-text
+      [formGroup]="formGroup"
+      [fieldMeta]="passwordField"
+    >
+    </app-input-text>
+  </div>
+  <div></div>
+  <button class="btn btn-primary btn-block" type="submit" (click)="login()" [disabled]="isApiRunning">Login</button>
+</form>
+<div *ngIf="showLoader" class="text-center">
+  <div class="spinner-border" role="status">
+
+  </div>
+</div>

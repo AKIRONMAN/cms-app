@@ -1,0 +1,16 @@
+.btn{
+  width: unset;
+}
+
+td .status{
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+}
+
+td .status.active{
+  background: green;
+}
+td .status.inactive{
+  background: red;
+}

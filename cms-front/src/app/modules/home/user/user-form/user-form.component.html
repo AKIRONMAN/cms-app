@@ -1,0 +1,35 @@
+<form>
+  <div class="form-group">
+    <app-input-text
+      [fieldMeta]="firstNameField"
+      [formGroup]="formGroup"></app-input-text>
+    <app-input-text
+      [fieldMeta]="lastNameField"
+      [formGroup]="formGroup"></app-input-text>
+  </div>
+  <div class="form-group">
+    <app-input-text [fieldMeta]="emailField"
+                    [formGroup]="formGroup"></app-input-text>
+    <app-input-text
+      [formGroup]="formGroup"
+      [fieldMeta]="mobileField">
+    </app-input-text>
+  </div>
+  <div class="form-group fields ">
+    <app-input-text
+      *ngIf="!user || !user.id"
+      [formGroup]="formGroup"
+      [fieldMeta]="passwordField">
+    </app-input-text>
+  </div>
+  <div class="form-group fields">
+    <div>
+      <input  type="radio" value="active" name="status" [(ngModel)]="status"  required> Active
+      <input  type="radio" value="inactive" name="status" [(ngModel)]="status"  required> Inactive
+    </div>
+  </div>
+  <div class="form-group fields">
+      <label >About</label>
+      <textarea name="about" [(ngModel)]="this.aboutField" class="form-control" placeholder="Please enter about user"></textarea>
+  </div>
+</form>

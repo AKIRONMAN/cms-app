@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row" style="margin-bottom: 20px">
+      <button class="btn btn-primary" (click)="addUser(mymodal)"> Add User</button>
+      <button class="btn btn-danger" style="float: left; margin-left: 83%;" (click)="logout()">Logout</button>
+  </div>
+  <div class="row">
+    <div class="form-group fields">
+      <input (keyup)="search('term', $event)" [(ngModel)]="name" placeholder="Search User">
+    </div>
+    <div class="form-group fields">
+      <div>
+        <input  type="radio" value="active" name="status" [(ngModel)]="status"  required (click)="search('status', $event)"> Active
+        <input  type="radio" value="inactive" name="status" [(ngModel)]="status"  required (click)="search('status', $event)" > Inactive
+      </div>
+    </div>
+    <table class="table" *ngIf="!showLoader && users && users.length > 0">
+      <thead>
+      <tr>
+        <th scope="col">Status</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">About</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users">
+        <td class="text-center"><div class="status {{user.isActive ? 'active' : 'inactive'}}"></div></td>
+        <td>{{user.firstName + ' ' + user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.about}}</td>
+        <td>
+          <ng-container *ngIf="user.canDelete">
+            <span class="fa fa-pencil" style="margin-right: 20px;" (click)="editUser(mymodal, user)"></span>
+            <span class="fa fa-trash" (click)="deleteUser(user)"></span>
+          </ng-container>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div *ngIf="!showLoader && users && users.length == 0">
+      No Students found!
+    </div>
+
+    <div *ngIf="showLoader" class="text-center">
+      <div class="spinner-border" role="status">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #mymodal let-modal>
+  <add-user *ngIf="reloadDialog" (closeDialog)="closeDialog(modal, $event)" [user]="selectedUser"></add-user>
+</ng-template>

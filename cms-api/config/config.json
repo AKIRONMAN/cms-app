@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "root",
+    "password": "",
+    "database": "cms_app",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "secret": "cms-app-secret-web-config-key"
+  },
+  "test": {
+    "username": "root",
+    "password": "",
+    "database": "cms_app",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "cms_app",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
